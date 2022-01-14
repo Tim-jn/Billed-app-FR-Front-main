@@ -25,6 +25,9 @@ export default class NewBill {
     formData.append('file', file)
     formData.append('email', email)
 
+// Added a regex to filter the file extension, if it is not valid --> clear the file and send an alert
+ 
+    if (/\.(png|jpg|jpeg)$/i.test(fileName)) {
     this.store
       .bills()
       .create({
@@ -39,6 +42,10 @@ export default class NewBill {
         this.fileUrl = fileUrl
         this.fileName = fileName
       }).catch(error => console.error(error))
+    } else {
+      e.target.value="";
+      alert("Veuillez choisir un fichier .jpg, .jpeg ou .png");
+    }
   }
   handleSubmit = e => {
     e.preventDefault()
