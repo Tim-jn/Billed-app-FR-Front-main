@@ -28,14 +28,14 @@ describe("Given I am connected as an employee", () => {
   // Added test for view/BillsUI.js //
 
   describe("When I am on Bills Page and it's loading", () => {
-    it("Should return Loading Page", () => {
+    test("Then it should return Loading Page", () => {
       const html = BillsUI({ loading: true });
       expect(html).toMatch(new RegExp("Loading..."));
     });
   });
 
   describe("When I am on Bills Page and there's an error", () => {
-    it("Should return Error Page", () => {
+    test("Then it should return Error Page", () => {
       const html = BillsUI({ error: true });
       expect(html).toMatch(new RegExp("Erreur"));
     });
