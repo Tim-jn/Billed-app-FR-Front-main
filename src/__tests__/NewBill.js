@@ -2,22 +2,47 @@
  * @jest-environment jsdom
  */
 
-import { screen } from "@testing-library/dom"
+import { screen, fireEvent } from "@testing-library/dom"
 import NewBillUI from "../views/NewBillUI.js"
 import NewBill from "../containers/NewBill.js"
 import store from "../__mocks__/store"
 import BillsUI from "../views/BillsUI.js"
+import { localStorageMock } from "../__mocks__/localStorage.js";
 
+const localStorage = () => {
+  Object.defineProperty(window, "localStorage", { value: localStorageMock });
+  window.localStorage.setItem(
+    "user",
+    JSON.stringify({
+      type: "Employee",
+    })
+  );
+}
 
 describe("Given I am connected as an employee", () => {
   describe("When I am on NewBill Page", () => {
-    test("Then ...", () => {
-      const html = NewBillUI()
-      document.body.innerHTML = html
-      //to-do write assertion
-    })
-  })
-})
+    describe("When I click on submit", () => {
+      test("it should check if file is valid", () => {
+        document.body.innerHTML = NewBillUI();
+
+        const onNavigate = (pathname) => {
+          document.body.innerHTML = ROUTES({ pathname });
+        };
+
+        const bills = new NewBill({ document, onNavigate, store, localStorage });
+
+        const file = screen.getByTestId("file");
+        const handleChangeFile = jest.fn(bills.handleChangeFile);
+
+        file.addEventListener("change", handleChangeFile);
+
+        fireEvent.change(file, { target: { fileName: "image.png" } });
+        expect(file.fileName).toBe("image.png");
+        expect(file.fileName).toMatch(new RegExp("png|jpg|jpeg"));
+      });
+    });
+  });
+});
 
 // integration test POST NewBill
 describe("Given I am a user connected as Employee", () => {
