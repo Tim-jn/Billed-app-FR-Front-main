@@ -8,22 +8,24 @@ import NewBill from "../containers/NewBill.js"
 import store from "../__mocks__/store"
 import BillsUI from "../views/BillsUI.js"
 import { localStorageMock } from "../__mocks__/localStorage.js";
-
-const localStorage = () => {
-  Object.defineProperty(window, "localStorage", { value: localStorageMock });
-  window.localStorage.setItem(
-    "user",
-    JSON.stringify({
-      type: "Employee",
-    })
-  );
-}
+import { ROUTES } from "../constants/routes.js";
 
 describe("Given I am connected as an employee", () => {
   describe("When I am on NewBill Page", () => {
-    describe("When I click on submit", () => {
+
+    // Test for check the extension of the file
+
+    describe("When I add a new file for the proof", () => {
       test("it should check if file is valid", () => {
         document.body.innerHTML = NewBillUI();
+
+        Object.defineProperty(window, "localStorage", { value: localStorageMock });
+        window.localStorage.setItem(
+          "user",
+          JSON.stringify({
+            type: "Employee",
+          })
+        );
 
         const onNavigate = (pathname) => {
           document.body.innerHTML = ROUTES({ pathname });
@@ -41,10 +43,40 @@ describe("Given I am connected as an employee", () => {
         expect(file.fileName).toMatch(new RegExp("png|jpg|jpeg"));
       });
     });
-  });
+
+    // Test for creating a bill when the form is valid
+
+    describe('I submit a valid Bill', () => {
+      test('it should create a new bill', () => {
+        document.body.innerHTML = NewBillUI();
+
+        Object.defineProperty(window, "localStorage", { value: localStorageMock });
+        window.localStorage.setItem(
+          "user",
+          JSON.stringify({
+            type: "Employee",
+          })
+        );
+
+        const onNavigate = (pathname) => {
+          document.body.innerHTML = ROUTES({ pathname })
+        }
+  
+        const bills = new NewBill({ document, onNavigate, localStorage });
+
+        const handleSubmit = jest.fn(bills.handleSubmit)
+        const submitBtn = screen.getByTestId("form-new-bill")
+        submitBtn.addEventListener("submit", handleSubmit)
+        fireEvent.submit(submitBtn)
+        expect(handleSubmit).toHaveBeenCalled()
+        expect(screen.getByText('Mes notes de frais')).toBeTruthy()
+       })
+    })
+  })
 });
 
 // integration test POST NewBill
+
 describe("Given I am a user connected as Employee", () => {
   describe("When I create a new bill", () => {
     test("send bill to mock API POST", async () => {

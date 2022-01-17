@@ -20,10 +20,6 @@ window.localStorage.setItem(
 
 describe("Given I am connected as an employee", () => {
   describe("When I am on Bills Page", () => {
-    test("Then bill icon in vertical layout should be highlighted", () => {
-      const html = BillsUI({ data: []})
-      document.body.innerHTML = html
-    })
     test("Then bills should be ordered from earliest to latest", () => {
       const html = BillsUI({ data: bills })
       document.body.innerHTML = html
@@ -36,12 +32,16 @@ describe("Given I am connected as an employee", () => {
 
   // Added test for view/BillsUI.js //
 
+  // Test for checking if loading page is returned when it's loading
+
   describe("When I am on Bills Page and it's loading", () => {
     test("Then it should return Loading Page", () => {
       const html = BillsUI({ loading: true });
       expect(html).toMatch(new RegExp("Loading..."));
     });
   });
+
+  // Test for checking if erro page is returned when there's an error
 
   describe("When I am on Bills Page and there's an error", () => {
     test("Then it should return Error Page", () => {
@@ -51,17 +51,6 @@ describe("Given I am connected as an employee", () => {
   });
 
   // Added test for containers/Bills.js //
-
-  describe('When I am on Bills page and there are no bills', () => {
-    test('Then the bills table should be empty', () => {
-      const html = BillsUI({ data: [] });
-      document.body.innerHTML = html;
-
-      const eyeIcon = screen.queryByTestId('icon-eye');
-
-      expect(eyeIcon).toBeNull();
-    });
-  });
 
   // Test for redirect on click button new Bill
 
