@@ -13,6 +13,7 @@ Débuggez et testez un SaaS RH
 - Rédiger un plan de test end-to-end manuel
 - Ecrire des tests d'intégration avec JavaScript
 
+## Instructions d'OpenClassrooms
 
 ## L'architecture du projet :
 Ce projet, dit frontend, est connecté à un service API backend que vous devez aussi lancer en local.
