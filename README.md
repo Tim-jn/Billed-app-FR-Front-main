@@ -1,3 +1,26 @@
+# Billed
+
+## Intitulé du projet
+Débuggez et testez un SaaS RH
+
+## [Live demo](https://timjn-billed.netlify.app/)
+
+## Résumé de la mission 
+
+Dans ce projet, il nous est demandé de débugger les différents problèmes existants sur le site Billed, et de rajouter des test unitaires et d'intégration afin d'obtenir un taux de couverture de 80% des différents fichiers.
+Il nous est également demandé de rédiger un plan de test End-to-End pour le parcours employé.
+
+## Languages utilisés 
+ - JavaScript
+ - Le framework de test Jest
+
+## Compétences évaluées
+- Ecrire des tests unitaires avec JavaScript
+- Débugger une application web avec le Chrome Debugger
+- Rédiger un plan de test end-to-end manuel
+- Ecrire des tests d'intégration avec JavaScript
+
+# Instructions d'OpenClassrooms
 
 ## L'architecture du projet :
 Ce projet, dit frontend, est connecté à un service API backend que vous devez aussi lancer en local.
