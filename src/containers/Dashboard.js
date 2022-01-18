@@ -85,7 +85,7 @@ export default class {
   }
 
 // fixed dashboard issue, Expected behavior: be able to unfold several lists, and consult the tickets of each of the two lists.
-// --> fixed by removing a condition 
+// --> fixed by removing a useless condition that change display
 
   handleEditTicket(e, bill, bills) {
     // if (this.counter === undefined || this.id !== bill.id) this.counter = 0
