@@ -5,7 +5,7 @@ Débuggez et testez un SaaS RH
 
 ## Languages utilisés 
  - JavaScript
- - Jest
+ - Le framework de test Jest
 
 ## Compétences évaluées
 - Ecrire des tests unitaires avec JavaScript
