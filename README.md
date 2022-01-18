@@ -1,3 +1,18 @@
+# Billed
+Débuggez et testez un SaaS RH
+
+## [Live demo](https://timjn-billed.netlify.app/)
+
+## Languages utilisés 
+ - JavaScript
+ - Jest
+
+## Compétences évaluées
+- Ecrire des tests unitaires avec JavaScript
+- Débugger une application web avec le Chrome Debugger
+- Rédiger un plan de test end-to-end manuel
+- Ecrire des tests d'intégration avec JavaScript
+
 
 ## L'architecture du projet :
 Ce projet, dit frontend, est connecté à un service API backend que vous devez aussi lancer en local.
