@@ -5,6 +5,11 @@ Débuggez et testez un SaaS RH
 
 ## [Live demo](https://timjn-billed.netlify.app/)
 
+## Résumé de la mission 
+
+Dans ce projet, il nous est demandé de débugger les différents problèmes existants sur le site Billed, et de rajouter des test unitaires et d'intégration afin d'obtenir un taux de couverture de 80% des différents fichiers.
+Il nous est également demandé de rédiger un plan de test End-to-End pour le parcours employé.
+
 ## Languages utilisés 
  - JavaScript
  - Le framework de test Jest
